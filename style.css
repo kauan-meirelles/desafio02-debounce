@@ -1,0 +1,115 @@
+/* Desafio técnico #02 — visual "Editor escuro" */
+:root {
+  --fundo: #0d1117;
+  --painel: #161b22;
+  --borda: #30363d;
+  --texto: #e6edf3;
+  --corpo: #c9d1d9;
+  --secundario: #7d8590;
+  --azul: #3178c6;
+  --amarelo: #f7df1e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: start center;
+  padding: 12vh 16px 32px;
+  background: var(--fundo);
+  color: var(--corpo);
+  font: 16px/1.5 Inter, system-ui, sans-serif;
+}
+
+.cartao {
+  width: min(100%, 520px);
+  padding: 28px;
+  background: var(--painel);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+}
+
+.etiqueta {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--amarelo);
+  color: var(--fundo);
+  font: 700 12px/1.4 "JetBrains Mono", ui-monospace, monospace;
+  letter-spacing: 0.05em;
+}
+
+h1 {
+  margin: 12px 0 24px;
+  color: var(--texto);
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.destaque { color: #4a90e2; }
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--secundario);
+}
+
+input {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--fundo);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  color: var(--texto);
+  font: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input::placeholder { color: var(--secundario); }
+
+input:focus {
+  outline: none;
+  border-color: var(--azul);
+  box-shadow: 0 0 0 3px rgb(49 120 198 / 0.35);
+}
+
+#situacao {
+  min-height: 1.5em;
+  margin: 12px 0;
+  font: 13px/1.5 "JetBrains Mono", ui-monospace, monospace;
+  color: var(--secundario);
+}
+
+#resultados {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--borda);
+}
+
+#resultados:empty { display: none; }
+
+#resultados li {
+  padding: 10px 4px;
+  border-bottom: 1px solid var(--borda);
+  color: var(--texto);
+  animation: aparecer 0.25s ease-out both;
+  transition: background 0.15s, padding-left 0.15s;
+}
+
+#resultados li:hover {
+  background: rgb(49 120 198 / 0.12);
+  padding-left: 12px;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
